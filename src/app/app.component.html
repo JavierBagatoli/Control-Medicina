@@ -1,0 +1,40 @@
+<main class="main">
+    <div class="flex flex-row gap-2 m-2">
+        <input/>
+        <p-button
+            label="hola"
+        />
+    </div>
+    <section class="flex flex-row">
+        @for (item of week; track $index) {
+            @if([0,1,2,3,4,5,6,7].includes(item.id)){
+                <div 
+                    style="
+                        width: 15%;
+                        background-color: black;
+                        height: 20rem;"
+                    class="flex flex-column text-center gap-2">
+                    <span class="m-2">
+                        {{item.name}}
+                    </span>
+                    <section>
+                        @for (medicine of item.medication; track $index) {
+                            <div
+                                (click)="medicine.state = !medication.state"
+                                style="background-color: rgb(23, 76, 76);"
+                                class="flex flex-row m-3 gap-2">
+                                <img 
+                                    [ngClass]="medicine.state ? 'icon-inactive' : 'icon-active' "
+                                    class="icon-img "                                
+                                    src="../assets/images/drugs.png"/>
+                                <p>{{medicine.name}}</p>
+                            </div>
+                        }
+                    </section>
+                </div>
+            }
+        }
+    </section>
+</main>
+
+<router-outlet />

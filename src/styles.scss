@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@use 'primeicons/primeicons.css';
+@use 'primeflex/primeflex.scss';
+
+
+.icon-img{
+    margin: 0.4rem;
+    width: 2rem;
+}
+
+.icon-active {
+  -webkit-filter: drop-shadow(2px 1px 0 rgb(198, 179, 179))
+                  drop-shadow(-1px -1px 0 rgb(198, 179, 179));
+  filter: drop-shadow(2px 1px 0 rgb(198, 179, 179)) 
+          drop-shadow(-1px -1px 0 rgb(198, 179, 179));
+}
+
+.icon-inactive {
+  -webkit-filter: drop-shadow(2px 1px 0 rgb(229, 74, 74))
+                  drop-shadow(-1px -1px 0 rgb(229, 74, 74));
+  filter: drop-shadow(2px 1px 0 rgb(229, 74, 74)) 
+          drop-shadow(-1px -1px 0 rgb(229, 74, 74));
+}
