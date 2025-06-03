@@ -1,0 +1,27 @@
+<div class="flex flex-row table">
+    @for (item of weeks(); track $index; let i = $index) {
+    @if(listOfDayCellphone().includes(i)){
+        <div
+            (click)="emmitClick(i,$event)"
+            class="w-full text-center border background-day"
+            [class.selected-column]="item.id === idDaySelected()"
+        >
+            <h1 
+                style="color: black;">
+                {{item.name}}
+            </h1>
+            @for (medication of item.medication; track $index) {
+                <card-medicine
+                    [medicine]="medication"
+                />
+            }
+            @if( item.medication.length < 3){
+                <section class="justify-content-around flex flex-column gap-2 m-6">
+                    <span>Click</span>
+                    <span>Aquí</span>
+                </section>
+            }
+        </div>
+    }
+    }
+</div>

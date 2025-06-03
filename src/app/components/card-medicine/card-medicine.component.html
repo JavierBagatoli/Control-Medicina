@@ -1,0 +1,33 @@
+<div 
+    style="background-color: rgb(23, 76, 76);"
+    class="flex flex-column m-3 gap-2 animation-up">
+    <section (click)="medicine().state = !medicine().state" class="flex flex-row gap-2">
+        <img 
+            [ngClass]="medicine().state ? 'icon-active':'icon-inactive' "
+            class="icon-img "                                
+            src="../assets/images/drugs.png"/>
+        <p>{{medicine().name}}</p>
+    </section>
+
+    <i 
+        (click)="showMoreInfo = !showMoreInfo"
+        [ngClass]="showMoreInfo? 'pi-angle-down': 'pi-angle-up'"
+        class="pi mb-2" style="color: white"></i>
+    
+    @if(showMoreInfo){
+        <section class="flex flex-column gap-3 m-2">
+            <div>
+                <span class="text-start">Descripcion: </span>
+                <span>{{medicine().description}}</span>
+            </div>
+            <div>
+                <span>Administrar por: </span>
+                <span>{{medicine().halfAdministration}}</span>
+            </div>
+            <div>
+                <span>Descripcion: </span>
+                <span>{{medicine().description}}</span>
+            </div>
+        </section>
+    }
+</div>

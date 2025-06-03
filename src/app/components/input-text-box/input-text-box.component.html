@@ -1,0 +1,18 @@
+<div class="flex flex-row align-content-center w-full">
+    @if(formControl().getRawValue() !== undefined){
+    <textarea 
+        rows="5"
+        cols="30"
+        pTextarea
+        
+        ngDefaultControl
+        class="w-full"
+        pSize="large"
+        pInputText
+        [formControl]="formControl()"
+        type="text"
+        placeholder="{{label()}}"
+        >
+    </textarea>
+    }
+</div>

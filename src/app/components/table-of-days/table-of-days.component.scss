@@ -1,0 +1,42 @@
+//@import '../../../../colors.scss';
+
+.height{
+    height: 2rem;
+}
+
+
+.table {
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+.background-day{
+	background: #2A7B9B;
+	background: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%,  rgba(42, 123, 155, 0.90) 50%, rgba(42, 123, 155, 1) 100%);
+}
+
+.rotate{
+	opacity: 0.5;
+	writing-mode: vertical-rl;
+	text-orientation: upright;
+	margin-top: 10rem;
+	animation: desbanecer 10s ease 0s infinite normal forwards;
+}
+
+@keyframes desbanecer {
+	0%,
+	50%,
+	100% {
+		opacity: 0.5;
+	}
+
+	25%,
+	75% {
+		opacity: 0;
+	}
+}
+
+.border{
+	border-right: #87899441 solid;
+}
