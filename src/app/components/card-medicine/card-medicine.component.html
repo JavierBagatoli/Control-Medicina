@@ -4,8 +4,8 @@
     <section (click)="medicine().state = !medicine().state" class="flex flex-row gap-2">
         <img 
             [ngClass]="medicine().state ? 'icon-active':'icon-inactive' "
-            class="icon-img "                                
-            src="../assets/images/drugs.png"/>
+            class="icon-img "
+            [src]="'../../../assets/images/' + medicine().icon + '.png'"/>
         <p>{{medicine().name}}</p>
     </section>
 

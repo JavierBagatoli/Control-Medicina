@@ -21,35 +21,16 @@ import { MedicineFormComponent } from "./template/form-medicine/form-medicine.co
 export class AppComponent {
   title = 'excersice-app';
 
-  medication = () => {
-    return {
-    name: 'Paracetamol',
-    state: false,
-    description: 'Sirve para calmar el dolor',
-    dose: '200Ml',
-    halfAdministration: 'Oral',
-    icon: 'pills'
-    }
-  }
-
-  medication1: medicationI = {
-    name: 'Paracetamol',
-    state: false,
-    description: 'Sirve para calmar el dolor',
-    dose: '200Ml',
-    halfAdministration: 'Oral',
-    icon: 'pills'
-  }
   idDaySelected: number = -1;
-
+  idMedicineSelected: number = -1;
   listMedications: medicationI[] = [];
 
   week : weekOfMedicine[] = [
-    {id: 0, name: 'Lunes', medication:[this.medication()]},
+    {id: 0, name: 'Lunes', medication:[]},
     {id: 1, name: 'Martes', medication:[]},
-    {id: 2, name: 'Miercoles', medication:[this.medication(),this.medication1,this.medication()]},
+    {id: 2, name: 'Miercoles', medication:[]},
     {id: 3, name: 'Jueves', medication:[]},
-    {id: 4, name: 'Viernes', medication:[this.medication(),this.medication()]},
+    {id: 4, name: 'Viernes', medication:[]},
     {id: 5, name: 'Sabado', medication:[]},
     {id: 6, name: 'Domingo', medication:[]},
   ]
@@ -57,6 +38,13 @@ export class AppComponent {
   constructor(@Inject(DOCUMENT) document: Document) { }
 
   addMedication($event : any){
-    this.listMedications.push($event)
+    this.listMedications.push({...$event, id: (new Date()).getTime()})
+  }
+
+  clickOnDay($event: any){
+    const medication = this.listMedications.find(medication => medication.id === this.idMedicineSelected)
+    if(medication){
+      this.week[$event].medication.push(medication)
+    }
   }
 }

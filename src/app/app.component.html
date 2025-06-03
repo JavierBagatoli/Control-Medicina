@@ -4,7 +4,9 @@
     <section class="flex flex-row">
         @for (item of listMedications; track $index) {
             <div>
-                <div style="border-radius: 0.5rem; background-color: rgb(52, 33, 9);" 
+                <div
+                    (click)="idMedicineSelected = item.id"
+                    style="border-radius: 0.5rem; background-color: rgb(52, 33, 9);" 
                     class="flex flex-row p-2 m-2">
                     <img
                         style="width: 1rem;" 
@@ -19,6 +21,7 @@
     <table-of-days
         [weeks]="week"
         [idDaySelected]="idDaySelected"
+        (selectDay)="clickOnDay($event)"
     />
 </main>
 

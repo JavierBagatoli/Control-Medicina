@@ -5,6 +5,7 @@ export interface weekOfMedicine {
 }
 
 export interface medicationI{
+    id: number,
     name: string,
     state: boolean,
     description: string,
