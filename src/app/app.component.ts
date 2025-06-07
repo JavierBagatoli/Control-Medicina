@@ -1,10 +1,14 @@
 import { CommonModule, DOCUMENT } from '@angular/common';
-import { Component, Inject } from '@angular/core';
+import { Component, inject, Inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { TableOfDaysComponent } from "./components/table-of-days/table-of-days.component";
 import { medicationI, weekOfMedicine } from './models/medicine.interface';
 import { MedicineFormComponent } from "./template/form-medicine/form-medicine.component";
+import { Store } from '@ngrx/store';
+import { MedicineStore } from './redux/store/medicine.store';
+import { medicineActions } from './redux/actions/medicine.action';
+import { DividerModule } from 'primeng/divider';
 
 @Component({
   selector: 'app-root',
@@ -13,13 +17,14 @@ import { MedicineFormComponent } from "./template/form-medicine/form-medicine.co
     ButtonModule,
     CommonModule,
     TableOfDaysComponent,
-    MedicineFormComponent],
+    MedicineFormComponent,
+    DividerModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  standalone: true
+  standalone: true,
 })
 export class AppComponent {
-  title = 'excersice-app';
+  private readonly store = inject(Store<{medicine: MedicineStore}>)
 
   idDaySelected: number = -1;
   idMedicineSelected: number = -1;
@@ -46,5 +51,11 @@ export class AppComponent {
     if(medication){
       this.week[$event].medication.push(medication)
     }
+  }
+
+  openDialogMedicine(){
+    this.store.dispatch(
+      medicineActions.openDialogCreateMedicine()
+    )
   }
 }

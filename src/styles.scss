@@ -6,6 +6,7 @@
 .icon-img{
     margin: 0.4rem;
     width: 2rem;
+    height: 2rem;
 }
 
 .icon-active {
@@ -32,4 +33,8 @@
 
 .animation-up:hover{
   transform: scale(1.1) rotate(1.5deg);
+}
+
+.p-drawer-left {
+  width: auto !important;
 }

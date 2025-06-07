@@ -1,68 +1,75 @@
-<section class="flex flex-column gap-2 table">
-    <input-text
-        label="Nombre Medicamento"
-        [formControl]="nameMedication"
-    />
-    <input-textarea
-        label="Descripcion"
-        [formControl]="nameMedication"
-    />
-    <input-text
-        label="Dosis"
-        [formControl]="nameMedication"
-    />
-    <input-text
-        label="Medio de Administracion"
-        [formControl]="nameMedication"
-    />
+<p-drawer 
+    [visible]="isVisible() || false"
+    header="Agregar Medicamento"
+    (onHide)="closeDialogMedicine()">
 
-    <span class="my-2">Seleccione un icono para la medicacion</span>
-    <div class="flex flex-row gap-2">
-        <img [ngClass]="iconMedication.value === 'drugs'? 'icon-active':'icon-inactive'"
-            class="icon-img animation-up"
-            (click)="iconMedication.setValue('drugs')"
-            src="../../assets/images/drugs.png">
-
-        <img class="icon-img animation-up"
-            [ngClass]="iconMedication.value === 'medicine'? 'icon-active':'icon-inactive'"
-            (click)="iconMedication.setValue('medicine')"
-            src="../../assets/images/medicine.png">
-
-        <img class="icon-img animation-up"
-            [ngClass]="iconMedication.value === 'multivitamin'? 'icon-active':'icon-inactive'"
-            (click)="iconMedication.setValue('multivitamin')"
-            src="../../assets/images/multivitamin.png">
-
-        <img class="icon-img animation-up"
-            [ngClass]="iconMedication.value === 'pharmaceutical'? 'icon-active':'icon-inactive'"
-            (click)="iconMedication.setValue('pharmaceutical')"
-            src="../../assets/images/pharmaceutical.png">
-
-        <img class="icon-img animation-up"
-            [ngClass]="iconMedication.value === 'pill'? 'icon-active':'icon-inactive'"
-            (click)="iconMedication.setValue('pill')"
-            src="../../assets/images/pill.png">
-
-        <img class="icon-img animation-up"
-            [ngClass]="iconMedication.value === 'pills-bottle'? 'icon-active':'icon-inactive'"
-            (click)="iconMedication.setValue('pills-bottle')"
-            src="../../assets/images/pills-bottle.png">
-
-        <img class="icon-img animation-up"
-            [ngClass]="iconMedication.value === 'vaccination'? 'icon-active':'icon-inactive'"
-            (click)="iconMedication.setValue('vaccination')"
-            src="../../assets/images/vaccination.png">
-
-         <img class="icon-img animation-up"
-            [ngClass]="iconMedication.value === 'vitamins'? 'icon-active':'icon-inactive'"
-            (click)="iconMedication.setValue('vitamins')"
-            src="../../assets/images/vitamins.png">
-    </div>
-    <div class="flex flex-column w-full">
-        <p-button
-            class="flex flex-column w-full"
-            label="Agregar Medicamento"
-            (onClick)="addMedication()"
+    <section class="flex flex-column gap-2 w-full">
+        <input-text
+            label="Nombre Medicamento"
+            [formControl]="nameMedication"
         />
-    </div>
-</section>
+        <input-textarea
+            label="Descripcion"
+            [formControl]="nameMedication"
+        />
+        <input-text
+            label="Dosis"
+            [formControl]="nameMedication"
+        />
+        <input-text
+            label="Medio de Administracion"
+            [formControl]="nameMedication"
+        />
+
+        <span class="my-2">Seleccione un icono para la medicacion</span>
+        <div class="flex flex-row gap-2">
+            <img [ngClass]="iconMedication.value === 'drugs'? 'icon-active':'icon-inactive'"
+                class="icon-img animation-up"
+                (click)="iconMedication.setValue('drugs')"
+                src="../../assets/images/drugs.png">
+
+            <img class="icon-img animation-up"
+                [ngClass]="iconMedication.value === 'medicine'? 'icon-active':'icon-inactive'"
+                (click)="iconMedication.setValue('medicine')"
+                src="../../assets/images/medicine.png">
+
+            <img class="icon-img animation-up"
+                [ngClass]="iconMedication.value === 'multivitamin'? 'icon-active':'icon-inactive'"
+                (click)="iconMedication.setValue('multivitamin')"
+                src="../../assets/images/multivitamin.png">
+
+            <img class="icon-img animation-up"
+                [ngClass]="iconMedication.value === 'pharmaceutical'? 'icon-active':'icon-inactive'"
+                (click)="iconMedication.setValue('pharmaceutical')"
+                src="../../assets/images/pharmaceutical.png">
+
+            <img class="icon-img animation-up"
+                [ngClass]="iconMedication.value === 'pill'? 'icon-active':'icon-inactive'"
+                (click)="iconMedication.setValue('pill')"
+                src="../../assets/images/pill.png">
+
+            <img class="icon-img animation-up"
+                [ngClass]="iconMedication.value === 'pills-bottle'? 'icon-active':'icon-inactive'"
+                (click)="iconMedication.setValue('pills-bottle')"
+                src="../../assets/images/pills-bottle.png">
+
+            <img class="icon-img animation-up"
+                [ngClass]="iconMedication.value === 'vaccination'? 'icon-active':'icon-inactive'"
+                (click)="iconMedication.setValue('vaccination')"
+                src="../../assets/images/vaccination.png">
+
+            <img class="icon-img animation-up"
+                [ngClass]="iconMedication.value === 'vitamins'? 'icon-active':'icon-inactive'"
+                (click)="iconMedication.setValue('vitamins')"
+                src="../../assets/images/vitamins.png">
+        </div>
+        <div class="flex flex-column w-full">
+            <p-button
+                ngSkipHydration
+                class="flex flex-column w-full"
+                label="Agregar Medicamento"
+                (onClick)="addMedication()"
+            ></p-button>
+        </div>
+    </section>
+</p-drawer>

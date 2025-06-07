@@ -1,28 +1,38 @@
-<main class="main">
-    <form-medicine class="flex m-2"
-        (actionAddMedication)="addMedication($event)"/>
+<main class="main flex flex-row">   
     <section class="flex flex-row">
-        @for (item of listMedications; track $index) {
-            <div>
-                <div
-                    (click)="idMedicineSelected = item.id"
-                    style="border-radius: 0.5rem; background-color: rgb(52, 33, 9);" 
-                    class="flex flex-row p-2 m-2">
-                    <img
-                        style="width: 1rem;" 
-                        class="icon-img" [src]="'../assets/images/'+item.icon+'.png'">
-                    <span class="mt-1">
-                        {{item.name}}
-                    </span>
-                </div>
-            </div>
-        }
+        <div class="flex flex-column w-full">
+            <p-button
+                class="m-1 w-full"
+                label="Agregar Medicamento"
+                (onClick)="openDialogMedicine()"
+            />
+            <p-divider/>
+            <article class="m-1">
+                @for (item of listMedications; track $index) {
+                    <div
+                        (click)="idMedicineSelected = item.id"
+                        style="border-radius: 0.5rem;" 
+                        class="flex flex-row p-2 m-2 animation-up brown-light-hover">
+                        <img
+                            style="width: 1rem; height: 1rem;" 
+                            class="icon-img" [src]="'../assets/images/'+item.icon+'.png'">
+                        <span class="mt-1">
+                            {{item.name}}
+                        </span>
+                    </div>
+                }
+            </article>
+        </div>
     </section>
     <table-of-days
+        class="w-full"
         [weeks]="week"
         [idDaySelected]="idDaySelected"
         (selectDay)="clickOnDay($event)"
     />
+    <form-medicine
+        (actionAddMedication)="addMedication($event)"/>
 </main>
 
 <router-outlet />
+

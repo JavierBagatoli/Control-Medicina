@@ -7,7 +7,8 @@ export const initialState: MedicineStore = {
     listOfExcersicesToDelete: {
         day: -1,
         poss: -1,
-    }
+    },
+    isOpenDialogCreateMedicine: false,
 };
 
 export const medicineReducer = createReducer(
@@ -31,5 +32,19 @@ export const medicineReducer = createReducer(
           poss: poss,
         }
     }
-  })
+  }),
+
+  on(medicineActions.openDialogCreateMedicine, (state):MedicineStore => {
+    return {
+        ...state,
+        isOpenDialogCreateMedicine: true
+    }
+  }),
+
+  on(medicineActions.closeDialogCreateMedicine, (state):MedicineStore => {
+    return {
+        ...state,
+        isOpenDialogCreateMedicine: false
+    }
+  }),
 )

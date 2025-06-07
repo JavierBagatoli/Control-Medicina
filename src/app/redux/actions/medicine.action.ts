@@ -6,6 +6,9 @@ export const medicineActions = createActionGroup ({
         'Restart':emptyProps(),
 
         'Set List of Medicine': props<{list: any | null}>(),
-        'Delete List of Medicine of Day': props<{day: number, poss:number}>()
+        'Delete List of Medicine of Day': props<{day: number, poss:number}>(),
+
+        'Open Dialog Create Medicine': emptyProps(),
+        'Close Dialog Create Medicine': emptyProps(),
     }
 })

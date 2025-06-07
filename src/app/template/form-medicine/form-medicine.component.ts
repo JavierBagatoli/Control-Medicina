@@ -6,21 +6,30 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { InputTextareaComponent } from "../../components/input-text-box/input-text-box.component";
 import { typeOfIconOfMedication } from '../../models/medicine.interface';
 import { ButtonModule } from 'primeng/button';
-
+import { DrawerModule } from 'primeng/drawer';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { selectIsOpenDialogCreateMedicne } from '../../redux/selectors/medicine.selectors';
+import { Store } from '@ngrx/store';
+import { MedicineStore } from '../../redux/store/medicine.store';
+import { medicineActions } from '../../redux/actions/medicine.action';
 @Component({
     selector: 'form-medicine',
     templateUrl: './form-medicine.component.html',
     styleUrl: './form-medicine.component.scss',
     standalone: true,
     imports: [
-    CommonModule,
-    DividerModule,
-    InputTextComponent,
-    InputTextareaComponent,
-    ButtonModule
-],
+        CommonModule,
+        DividerModule,
+        InputTextComponent,
+        InputTextareaComponent,
+        ButtonModule,
+        DrawerModule
+    ],
 })
 export class MedicineFormComponent{
+    private readonly store = inject(Store<{medicine: MedicineStore}>)
+    readonly isVisible = toSignal(this.store.select(selectIsOpenDialogCreateMedicne))
+
     formMedication : FormGroup = new FormGroup({});
     actionAddMedication = output()
 
@@ -56,8 +65,15 @@ export class MedicineFormComponent{
     }
 
     addMedication(){
-        console.log(this.formMedication.value)
+        console.log(this.formMedication.value);
         this.actionAddMedication.emit(this.formMedication.value);
         this.formMedication.reset();
+        this.closeDialogMedicine();
+    }
+
+    closeDialogMedicine(){
+        this.store.dispatch(
+            medicineActions.closeDialogCreateMedicine()
+        );
     }
 }

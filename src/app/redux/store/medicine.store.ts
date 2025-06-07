@@ -3,5 +3,6 @@ export interface MedicineStore{
     listOfExcersicesToDelete: {
         day: number,
         poss: number,
-    }
+    },
+    isOpenDialogCreateMedicine: boolean,
 }

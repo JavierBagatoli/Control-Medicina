@@ -11,3 +11,7 @@ export const selectListSelected = createSelector(
 export const selectListSelectedToDelete = createSelector(
     selectExersisesState, (state): {day: number, poss: number} => state.listOfExcersicesToDelete
 )
+
+export const selectIsOpenDialogCreateMedicne = createSelector(
+    selectExersisesState, (state): boolean => state.isOpenDialogCreateMedicine
+)
